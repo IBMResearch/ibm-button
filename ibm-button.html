@@ -7,6 +7,9 @@ The complete set of contributors may be found at https://ibmresearch.github.io/C
 -->
 
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-behaviors/iron-button-state.html">
+<link rel="import" href="../iron-behaviors/iron-control-state.html">
+<link rel="import" href="../paper-behaviors/paper-ripple-behavior.html">
 
 <!--
 Button with the IBM Design guidelines.
@@ -18,7 +21,76 @@ Button with the IBM Design guidelines.
   <template>
     <style>
       :host {
-        display: block;
+        position: relative;
+        z-index: 0;
+
+        display: inline-block;
+
+        box-sizing: border-box;
+
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        outline-width: 0;
+
+        font: inherit;
+
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      :host(:not([filled])) {
+        padding: 11px 18px;
+
+        -webkit-transition: border 0.3s, color 0.3s, background-color 0.3s;
+        transition: border 0.3s, color 0.3s, background-color 0.3s;
+
+        color: var(--ibm-button-color, #3b6caa);
+        border-width: 2px;
+        border-style: solid;
+        border-color: var(--ibm-button-border-color, var(--ibm-button-color, #3b6caa));
+        background-color: var(--ibm-button-background-color, transparent);
+      }
+
+      :host(:not([filled])[focused]),
+      :host(:not([filled])[active]),
+      :host(:not([filled]):hover) {
+        color: var(--ibm-button-color-focused, #ffffff);
+        border-color: var(--ibm-button-border-color-focused, var(--ibm-button-color, #3b6caa));
+        background-color: var(--ibm-button-background-color-focused, var(--ibm-button-color, #3b6caa));
+      }
+
+      :host([filled]) {
+        padding: 13px 20px;
+
+        -webkit-transition: color 0.3s, background-color 0.3s;
+        transition: color 0.3s, background-color 0.3s;
+
+        color: var(--ibm-button-filled-color, #ffffff);
+        background-color: var(--ibm-button-filled-background-color, #3b6caa);
+      }
+
+      :host([filled][focused]),
+      :host([filled][active]),
+      :host([filled]:hover) {
+        color: var(--ibm-button-filled-color-focused, var(--ibm-button-filled-color, #ffffff));
+        background-color: var(--ibm-button-filled-background-color-focused, #2a4d79);
+      }
+
+      :host([disabled]) {
+        cursor: auto;
+        pointer-events: none;
+
+        color: #a8a8a8;
+        border-color: #eaeaea;
+        background: #eaeaea;
+      }
+
+      paper-ripple {
+        color: var(--ibm-button-ink-color);
       }
     </style>
 
@@ -26,7 +98,51 @@ Button with the IBM Design guidelines.
   </template>
   <script>
     Polymer({
-      is: 'ibm-button'
+      is: 'ibm-button',
+
+      hostAttributes: {
+        role: 'button',
+        tabindex: '0'
+      },
+
+      behaviors: [
+        Polymer.IronButtonState,
+        Polymer.IronControlState,
+        Polymer.PaperRippleBehavior
+      ],
+
+      observers: [
+        '_computeKeyboardClass(receivedFocusFromKeyboard)'
+      ],
+
+      _computeKeyboardClass: function(receivedFocusFromKeyboard) {
+        this.toggleClass('keyboard-focus', receivedFocusFromKeyboard);
+      },
+
+      /**
+       * In addition to `IronButtonState` behavior, when space key goes down,
+       * create a ripple down effect.
+       */
+      _spaceKeyDownHandler: function(event) {
+        Polymer.IronButtonStateImpl._spaceKeyDownHandler.call(this, event);
+
+        // Ensure that there is at most one ripple when the space key is held down.
+        if (this.hasRipple() && this.getRipple().ripples.length < 1) {
+          this._ripple.uiDownAction();
+        }
+      },
+
+      /**
+       * In addition to `IronButtonState` behavior, when space key goes up,
+       * create a ripple up effect.
+       */
+      _spaceKeyUpHandler: function(event) {
+        Polymer.IronButtonStateImpl._spaceKeyUpHandler.call(this, event);
+
+        if (this.hasRipple()) {
+          this._ripple.uiUpAction();
+        }
+      }
     });
   </script>
 </dom-module>
