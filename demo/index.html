@@ -21,14 +21,61 @@ The complete set of contributors may be found at https://ibmresearch.github.io/C
     <link rel="import" href="../ibm-button.html">
 
     <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 500px;
+      }
+
+      .note {
+        margin-top: 0;
+      }
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>ibm-button</h3>
+      <h3>Buttons can be flat, filled, toggleable or disabled</h3>
       <demo-snippet>
         <template>
-          <ibm-button></ibm-button>
+          <ibm-button>Flat</ibm-button>
+          <ibm-button filled>Filled</ibm-button>
+          <ibm-button filled toggles>Toggles</ibm-button>
+          <ibm-button disabled>Disabled</ibm-button>
+        </template>
+      </demo-snippet>
+
+      <h3>Buttons can be styled using custom properties</h3>
+      <demo-snippet>
+        <template>
+          <style is="custom-style">
+            ibm-button.pink {
+              --ibm-button-color: #ff4081;
+            }
+            ibm-button.indigo {
+              --ibm-button-filled-background-color: #3f51b5;
+              --ibm-button-filled-background-color-focused: #c5cae9;
+            }
+            ibm-button.green {
+              --ibm-button-filled-background-color: #4caf50;
+              --ibm-button-filled-background-color-focused: #f44336;
+            }
+            ibm-button.disabled {
+              color: white;
+            }
+          </style>
+
+          <ibm-button class="pink">Flat</ibm-button>
+          <ibm-button filled class="indigo">Filled</ibm-button>
+          <ibm-button filled toggles class="green">Toggles</ibm-button>
+          <ibm-button disabled class="disabled">Disabled</ibm-button>
+        </template>
+      </demo-snippet>
+
+      <h3>Buttons can be used as a link</h3>
+      <p class="note">Wrap it in an anchor tag with <code>tabindex="-1"</code>.</p>
+      <demo-snippet>
+        <template>
+          <a href="https://ibm.com/research" tabindex="-1">
+            <ibm-button>IBM Research</ibm-button>
+          </a>
         </template>
       </demo-snippet>
     </div>
