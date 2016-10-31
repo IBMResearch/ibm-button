@@ -17,7 +17,10 @@ Example:
 ```
 -->
 ```html
-<ibm-button></ibm-button>
+<ibm-button>Flat</ibm-button>
+<ibm-button filled>Filled</ibm-button>
+<ibm-button filled toggles>Toggles</ibm-button>
+<ibm-button disabled>Disabled</ibm-button>
 ```
 
 [travis-image]: https://travis-ci.org/IBMResearch/ibm-button.svg?branch=master
