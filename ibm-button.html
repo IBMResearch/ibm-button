@@ -14,6 +14,36 @@ The complete set of contributors may be found at https://ibmresearch.github.io/C
 <!--
 Button with the IBM Design guidelines.
 
+A button that has `toggles` true will remain `active` after being clicked (and
+will have an `active` attribute set). For more information, see the
+`Polymer.IronButtonState` behavior.
+
+To use `ibm-button` as a link, wrap it in an anchor tag. Since `ibm-button` will
+already receive focus, you may want to prevent the anchor tag from receiving
+focus as well by setting its tabindex to -1.
+
+```html
+<a href="https://ibm.com/research" tabindex="-1">
+  <ibm-button>IBM Research</ibm-button>
+</a>
+```
+
+### Styling
+
+Custom property                                 | Description                              | Default
+------------------------------------------------|------------------------------------------|------------------------------
+`--ibm-button-background-color`                 | Button background color                  | `transparent`
+`--ibm-button-background-color-focused`         | Button background color on focus         | `--ibm-button-color`
+`--ibm-button-border-color`                     | Button border color                      | `--ibm-button-color`
+`--ibm-button-border-color-focused`             | Button border color on focus             | `--ibm-button-color`
+`--ibm-button-color`                            | Button text color                        | `#3b6caa`
+`--ibm-button-color-focused`                    | Button text color on focus               | `#ffffff`
+`--ibm-button-filled-background-color`          | Filled button background color           | `#3b6caa`
+`--ibm-button-filled-background-color-focused`  | Filled button background color on focus  | `#2a4d79`
+`--ibm-button-filled-color`                     | Filled button text color                 | `#ffffff`
+`--ibm-button-filled-color-focused`             | Filled button text color on focus        | `--ibm-button-filled-color`
+`--ibm-button-ink-color`                        | Background color of the ripple           | Based on the button's color
+
 @demo demo/index.html
 -->
 
