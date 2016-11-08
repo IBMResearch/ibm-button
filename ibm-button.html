@@ -63,6 +63,8 @@ Custom property                                 | Description                   
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+        -webkit-transition: color 0.3s, background-color 0.3s;
+        transition: color 0.3s, background-color 0.3s;
         text-align: center;
 
         outline-width: 0;
@@ -75,9 +77,6 @@ Custom property                                 | Description                   
 
       :host(:not([filled])) {
         padding: 11px 18px;
-
-        -webkit-transition: border 0.3s, color 0.3s, background-color 0.3s;
-        transition: border 0.3s, color 0.3s, background-color 0.3s;
 
         color: var(--ibm-button-color, #3b6caa);
         border-width: 2px;
@@ -96,9 +95,6 @@ Custom property                                 | Description                   
 
       :host([filled]) {
         padding: 13px 20px;
-
-        -webkit-transition: color 0.3s, background-color 0.3s;
-        transition: color 0.3s, background-color 0.3s;
 
         color: var(--ibm-button-filled-color, #ffffff);
         background-color: var(--ibm-button-filled-background-color, #3b6caa);
