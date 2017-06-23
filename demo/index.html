@@ -20,15 +20,13 @@ The complete set of contributors may be found at https://ibmresearch.github.io/C
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
     <link rel="import" href="../ibm-button.html">
 
-    <style is="custom-style" include="demo-pages-shared-styles">
-      .vertical-section-container {
-        max-width: 500px;
-      }
-
-      .note {
-        margin-top: 0;
-      }
-    </style>
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+        .note {
+          margin-top: 0;
+        }
+      </style>
+    </custom-style>
   </head>
   <body>
     <div class="vertical-section-container centered">
@@ -45,22 +43,24 @@ The complete set of contributors may be found at https://ibmresearch.github.io/C
       <h3>Buttons can be styled using custom properties</h3>
       <demo-snippet>
         <template>
-          <style is="custom-style">
-            ibm-button.pink {
-              --ibm-button-color: #ff4081;
-            }
-            ibm-button.indigo {
-              --ibm-button-filled-background-color: #3f51b5;
-              --ibm-button-filled-background-color-focused: #c5cae9;
-            }
-            ibm-button.green {
-              --ibm-button-filled-background-color: #4caf50;
-              --ibm-button-filled-background-color-focused: #f44336;
-            }
-            ibm-button.disabled {
-              color: white;
-            }
-          </style>
+          <custom-style>
+            <style is="custom-style">
+              ibm-button.pink {
+                --ibm-button-color: #ff4081;
+              }
+              ibm-button.indigo {
+                --ibm-button-filled-background-color: #3f51b5;
+                --ibm-button-filled-background-color-focused: #c5cae9;
+              }
+              ibm-button.green {
+                --ibm-button-filled-background-color: #4caf50;
+                --ibm-button-filled-background-color-focused: #f44336;
+              }
+              ibm-button.disabled {
+                color: white;
+              }
+            </style>
+          </custom-style>
 
           <ibm-button class="pink">Flat</ibm-button>
           <ibm-button filled class="indigo">Filled</ibm-button>

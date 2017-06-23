@@ -1,5 +1,5 @@
-[![Build status][travis-image]][travis-url]
-[![Published on webcomponents.org][webcomponents-image]][webcomponents-url]
+[![Build status](https://travis-ci.org/IBMResearch/ibm-button.svg?branch=master)](https://travis-ci.org/IBMResearch/ibm-button)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/IBMResearch/ibm-button)
 
 ## \<ibm-button\>
 
@@ -23,8 +23,3 @@ Example:
 <ibm-button filled toggles>Toggles</ibm-button>
 <ibm-button disabled>Disabled</ibm-button>
 ```
-
-[travis-image]: https://travis-ci.org/IBMResearch/ibm-button.svg?branch=master
-[travis-url]: https://travis-ci.org/IBMResearch/ibm-button
-[webcomponents-image]: https://img.shields.io/badge/webcomponents.org-published-blue.svg
-[webcomponents-url]: https://beta.webcomponents.org/element/IBMResearch/ibm-button
